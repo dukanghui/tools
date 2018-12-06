@@ -1,0 +1,12 @@
+{
+  "name": "接口文档",
+  "version": "0.1.0",
+  "description": "一众汽车后台管理接口文档",
+  "title": "接口文档",
+  "url" : "http://192.168.1.222/yzplatform/mymvc?mvc_id=",
+  "sampleUrl": "http://192.168.1.222/yzplatform/mymvc?mvc_id=",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}

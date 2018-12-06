@@ -1,0 +1,7 @@
+{
+  "name": "josn_server",
+  "version": "1.0.0",
+  "scripts": {
+    "mock": "json-server db.json --port 3003"
+  }
+}

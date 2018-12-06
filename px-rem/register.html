@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script src="./assets/jquery.min.js"></script>
+    <script>
+        var html = document.querySelector('html')
+        var width = html.getBoundingClientRect().width
+        html.style.fontSize = width / 18.75 + 'px'
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style: none;
+        }
+        input {
+            -webkit-appearance: none;
+            border: none;
+            outline: none;
+            resize: none;
+            min-width: inherit;
+        }
+        input:focus {
+            outline: none;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #f7f7f7;
+        }
+        /*头部*/
+        .header {
+            background-color: #ffffff;
+            font-size: .85rem;
+            height: 2.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .header img {
+            position: absolute;
+            left: 0.75rem;
+            width: 0.425rem;
+            height: 0.7rem;
+        }
+        .header .title {
+            flex: 1;
+            text-align: center;
+        }
+        /*主体内容*/
+        .main {
+            margin-top: 0.4rem;
+            position: relative;
+        }
+        .main li {
+            background-color: #ffffff;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            border-bottom: 1px solid #f7f7f7;
+            display: flex;
+        }
+        .main li .li-left {
+            font-size: 0.8rem;
+            color: #101010;
+            width: 5rem;
+            min-width: 5rem;
+            text-align: center;
+        }
+        .main li input {
+            flex: 1;
+            min-width: 5rem;
+            font-size: .8rem;
+        }
+        .main li .getCode {
+            color: #ff6600;
+            font-size: .65rem;
+            padding: 0 0.75rem 0 0.275rem;
+            border-left: 1px solid #f7f7f7;
+            height: 1rem;
+            line-height: 1rem;
+            align-self: center;
+        }
+        .main li .drop-icon {
+            padding: 0 1.5rem;
+        }
+        .main li .drop-icon img {
+            width: 0.85rem;
+            height: 0.85rem;
+        }
+        /*下拉选择框*/
+        .sort {
+            display: none;
+            background-color: #fff;
+            width: 10rem;
+            font-size: 0.8rem;
+            box-shadow: 3px 3px 4px #ccc;
+            position: absolute;
+            right: 0.7rem;
+            bottom: -7.05rem;
+        }
+        .sort .triangle {
+            width: 0.6rem;
+            height: 0.6rem;
+            position: absolute;
+            right: 0.95rem;
+            top: -0.6rem;
+            border-top: .3rem solid transparent;
+            border-left: .3rem solid transparent;
+            border-right: .3rem solid transparent;
+            border-bottom: .3rem solid #ffffff;
+        }
+        .sort .sort-in {
+            height: 2.2rem;
+            line-height: 2.2rem;
+            border-bottom: 1px solid #dedede;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /*完成按钮*/
+        .sure {
+            padding: 0.75rem;
+        }
+        .sure .btn {
+            background-color: #ff6600;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.15rem;
+            height: 2rem;
+            line-height: 2rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <img src="assets/zc_return.png" alt="">
+    <div class="title">注册</div>
+</div>
+<ul class="main">
+    <li>
+        <div class="li-left">手机号码:</div>
+        <input type="number" placeholder="请输入手机号" id="phone">
+    </li>
+    <li>
+        <div class="li-left">验证码:</div>
+        <input type="text" placeholder="请输入验证码">
+        <div class="getCode">获取验证码</div>
+    </li>
+    <li>
+        <div class="li-left">设置密码:</div>
+        <input type="password" placeholder="请设置6-12位字符密码">
+    </li>
+    <li>
+        <div class="li-left">确认密码:</div>
+        <input type="password" placeholder="确认6-12位字符密码">
+    </li>
+    <li>
+        <div class="li-left">选择身份:</div>
+        <input type="text" value="个人" readonly id="user-type">
+        <div class="drop-icon"><img src="assets/zc_down.png" alt=""></div>
+    </li>
+    <div class="sort">
+        <div class="sort-in" id="type-per">
+            <img src="assets/zc_people.png" style="width: 0.7rem;height:0.775rem;margin-right: 0.4rem;" alt="">
+            <span>个人</span>
+        </div>
+        <div class="sort-in" id="type-comp">
+            <img src="assets/zc_company.png" style="width: 0.875rem;height:0.775rem;margin-right: 0.4rem" alt="">
+            <span>企业</span>
+        </div>
+        <div class="sort-in" id="type-serve" style="border-bottom: none;">
+            <img src="assets/zc_resiver.png" style="width: 0.75rem;height:0.8rem;margin-right: 0.4rem" alt="">
+            <span>服务机构</span>
+        </div>
+        <div class="triangle"></div>
+    </div>
+</ul>
+<div class="sure">
+    <div class="btn">完成</div>
+</div>
+<script>
+    // 控制盒子显示隐藏
+    $('.drop-icon,.sort-in').click(function () {
+        $('.sort').toggle()
+    })
+    $('#type-per').click(function () {
+        $('#user-type').val('个人')
+    })
+    $('#type-comp').click(function () {
+        $('#user-type').val('企业')
+    })
+    $('#type-serve').click(function () {
+        $('#user-type').val('服务机构')
+    })
+</script>
+</body>
+</html>
